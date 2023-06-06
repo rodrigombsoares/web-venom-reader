@@ -13,22 +13,26 @@ function getPreview(postAttributes) {
   );
 }
 
-async function getPostAttributes(postPath) {
-  const res = await fetch(postPath)  
-  return fm(res.text())["attributes"];
+async function fetchPostsAttributes(postPaths) {
+  let postsAttributes = []
+  for await (const postPath of postPaths) {
+    let res = await fetch(postPath)
+    let resText = await res.text()
+    postsAttributes.push(fm(resText)["attributes"]);  
+  }
+  return postsAttributes;
 }
+
 
 export default function PostList({ posts }) {
   const [postsAtt, setPostsAtt] = useState(["", "hey"]);
 
   useEffect(() => {
-    let pAtt = [];
-    posts.forEach((post) => {
-      let pa = getPostAttributes(post);
-      console.log(pa);
-      pAtt.push(pa);
-    });
-    setPostsAtt(pAtt);
+    async function getPostAttributes() {
+      let pAtt = await fetchPostsAttributes(posts);
+      setPostsAtt(pAtt);  
+    }
+    getPostAttributes();
   }, [posts]);
 
   return (

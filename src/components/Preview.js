@@ -18,11 +18,10 @@ export default function Preview({ postAttributes }) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {postAttributes['title']}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {postAttributes['description']}
           </Typography>
         </CardContent>
       </CardActionArea>
