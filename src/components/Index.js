@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import Post from './Post';
 import getPosts from '../connections/Venom';
+import PostList from './PostList';
 
 function Index() {
   const [posts, setPosts] = useState([])
@@ -11,7 +11,8 @@ function Index() {
     setPosts(posts);
   }, [])
   console.log(posts)
-  return (<Post post={post} />);
+  // return (<Post post={post} />);
+  return (<PostList posts={[post, post, post, post, post, post]} />);
 }
 
 export default Index;
