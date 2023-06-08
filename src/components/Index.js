@@ -12,7 +12,7 @@ function Index() {
   }, [])
   console.log(posts)
   // return (<Post post={post} />);
-  return (<PostList posts={[post, post, post, post, post, post]} />);
+  return (<PostList postPaths={[post, post, post, post, post, post]} />);
 }
 
 export default Index;

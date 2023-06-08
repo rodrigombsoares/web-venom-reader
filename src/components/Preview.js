@@ -6,7 +6,6 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 export default function Preview({ postAttributes }) {
-  console.log(postAttributes);
   return (
     <Card sx={{ maxWidth: "50%" }}>
       <CardActionArea>
