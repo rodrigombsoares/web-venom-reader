@@ -1,9 +1,9 @@
-import * as React from "react";
+import { CardActionArea } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
+import * as React from "react";
 
 export default function Preview({ postAttributes }) {
   return (
@@ -17,10 +17,10 @@ export default function Preview({ postAttributes }) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {postAttributes['title']}
+            {postAttributes["title"]}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {postAttributes['description']}
+            {postAttributes["description"]}
           </Typography>
         </CardContent>
       </CardActionArea>

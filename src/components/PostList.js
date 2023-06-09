@@ -9,7 +9,7 @@ const fm = require("front-matter");
 
 async function fetchPosts(postPaths) {
   let posts = [];
-  console.log("here")
+  console.log("here");
   for await (const postPath of postPaths) {
     let res = await fetchFromIPFS(postPath);
     let resText = await res.text();

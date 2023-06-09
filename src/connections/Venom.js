@@ -22,9 +22,9 @@ const ever = new ProviderRpcClient({
 });
 
 const WriterAbi = require("./Writer.abi.json");
-//   "0:8ef14ce80331321173089937bda45793527041d584b6872718f066c6fe8cc1ac"
+
 const writerAddres = new Address(
-  "0:afefb890de1de9fc1bc6ad3332eb07ba4854e35b2fd3f98fff1bcc0e06110dde"
+  "0:8ef14ce80331321173089937bda45793527041d584b6872718f066c6fe8cc1ac"
 );
 
 async function getPosts() {
@@ -33,7 +33,7 @@ async function getPosts() {
   }
   await ever.ensureInitialized();
   await ever.requestPermissions({
-    permissions: ['basic'],
+    permissions: ["basic"],
   });
 
   const writerAbi = new ever.Contract(WriterAbi, writerAddres);

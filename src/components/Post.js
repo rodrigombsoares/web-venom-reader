@@ -1,8 +1,5 @@
+import { Box, Button, Modal } from "@mui/material";
 import ReactMarkdown from "react-markdown";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import { Button } from "@mui/material";
 
 const style = {
   position: "absolute",
@@ -25,12 +22,6 @@ export default function Post({ post, open, handleClose }) {
       <Box sx={style} display="flex" flexDirection="column">
         <ReactMarkdown>{post["content"]}</ReactMarkdown>;
         <Button onClick={handleClose}>Close</Button>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-          Text in a modal
-        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-          Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
       </Box>
     </Modal>
   );
