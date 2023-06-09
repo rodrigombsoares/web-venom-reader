@@ -4,14 +4,15 @@ import Preview from "./Preview";
 import { useEffect, useState } from "react";
 import { removeMatter } from "../utils/posts";
 import Post from "./Post";
+import { fetchFromIPFS } from "../services/ipfs";
 
 const fm = require("front-matter");
 
 async function fetchPosts(postPaths) {
   let posts = [];
-  console.log("postPaths", postPaths);
+
   for await (const postPath of postPaths) {
-    let res = await fetch(postPath);
+    let res = await fetchFromIPFS(postPath);
     let resText = await res.text();
     posts.push({
       attributes: fm(resText)["attributes"],
@@ -41,7 +42,6 @@ export default function PostList({ postPaths }) {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    console.log("useEffect");
     async function getPosts() {
       let pAtt = await fetchPosts(postPaths);
       setPosts(pAtt);
@@ -50,7 +50,7 @@ export default function PostList({ postPaths }) {
   }, [postPaths]);
 
   return (
-    <div>
+    <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
       <Post post={currPost} open={open} handleClose={handleClose} />
       <List sx={{ width: "100%", bgcolor: "background.paper" }}>
         {posts.map((post) => getPreview(post, handleOpen))}
