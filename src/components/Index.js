@@ -9,8 +9,7 @@ function Index() {
     let posts = await getPosts();
     setPosts(posts);
   }, [])
-  
-  return (<PostList postPaths={[posts[1], posts[1]]} />);
+  return (<PostList postPaths={posts} />);
 }
 
 export default Index;
