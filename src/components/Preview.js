@@ -1,9 +1,12 @@
-import { CardActionArea } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Typography,
+} from "@mui/material";
 import * as React from "react";
+import { getImageURL } from "../services/ipfs";
 
 export default function Preview({ postAttributes }) {
   return (
@@ -12,13 +15,17 @@ export default function Preview({ postAttributes }) {
         <CardMedia
           component="img"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={getImageURL(postAttributes["image"])}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {postAttributes["title"]}
           </Typography>
+          <Typography variant="caption" display="block" gutterBottom>
+          {postAttributes["published"]}
+          </Typography>
+
           <Typography variant="body2" color="text.secondary">
             {postAttributes["description"]}
           </Typography>

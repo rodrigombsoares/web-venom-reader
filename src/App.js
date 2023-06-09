@@ -1,8 +1,14 @@
-import Index from './components/Index.js'
+import Index from "./components/Index.js";
+import Navbar from "./components/Navbar.js";
+import { ThemeProvider } from '@mui/material/styles';
+import theme from "./style/theme.js";
 
 function App() {
   return (
-    <Index></Index>
+    <ThemeProvider theme={theme}>
+      <Navbar />
+      <Index />
+    </ThemeProvider>
   );
 }
 
