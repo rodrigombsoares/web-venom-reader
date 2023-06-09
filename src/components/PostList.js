@@ -1,10 +1,9 @@
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Preview from "./Preview";
+import { Grid, List, ListItem } from "@mui/material";
 import { useEffect, useState } from "react";
+import { fetchFromIPFS } from "../services/ipfs";
 import { removeMatter } from "../utils/posts";
 import Post from "./Post";
-import { fetchFromIPFS } from "../services/ipfs";
+import Preview from "./Preview";
 
 const fm = require("front-matter");
 
@@ -24,7 +23,14 @@ async function fetchPosts(postPaths) {
 
 function getPreview(post, handleOpen) {
   return (
-    <ListItem alignItems="flex-start" onClick={() => handleOpen(post)}>
+    <ListItem
+      sx={{      
+        display: 'flex',
+        flexDirection: "column",
+        alignItems: "center"
+    }}
+      onClick={() => handleOpen(post)}
+    >
       <Preview postAttributes={post["attributes"]} />
     </ListItem>
   );
@@ -50,11 +56,16 @@ export default function PostList({ postPaths }) {
   }, [postPaths]);
 
   return (
-    <div style={{display: 'flex', justifyContent:'center', alignItems:'center'}}>
+    <Grid
+      container
+      direction="row"
+      justifyContent="space-around"
+      alignItems="flex-end"
+    >
       <Post post={currPost} open={open} handleClose={handleClose} />
       <List sx={{ width: "100%", bgcolor: "background.paper" }}>
         {posts.map((post) => getPreview(post, handleOpen))}
       </List>
-    </div>
+    </Grid>
   );
 }
