@@ -9,21 +9,19 @@ const fm = require("front-matter");
 
 async function fetchPosts(postPaths) {
   let posts = [];
-  console.log("here");
   for await (const postPath of postPaths) {
     let res = await fetchFromIPFS(postPath);
     let resText = await res.text();
+    // check if post format is correct
     if (!hasMatter(resText)) {
-      console.log("nope");
       continue;
     }
-    console.log("yep");
     posts.push({
       attributes: fm(resText)["attributes"],
       content: removeMatter(resText),
     });
   }
-  return posts;
+  return posts.sort((a, b) => a["attributes"]['published'] < b["attributes"]['published'] ? 1 : -1);
 }
 
 function getPreview(post, handleOpen) {

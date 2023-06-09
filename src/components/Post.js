@@ -20,7 +20,7 @@ export default function Post({ post, open, handleClose }) {
   return (
     <Modal open={open} onClose={handleClose}>
       <Box sx={style} display="flex" flexDirection="column">
-        <ReactMarkdown>{post["content"]}</ReactMarkdown>;
+        <ReactMarkdown>{post["content"]}</ReactMarkdown>
         <Button onClick={handleClose}>Close</Button>
       </Box>
     </Modal>
