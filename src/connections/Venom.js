@@ -24,7 +24,7 @@ const ever = new ProviderRpcClient({
 const WriterAbi = require("./Writer.abi.json");
 
 const writerAddres = new Address(
-  "0:8ef14ce80331321173089937bda45793527041d584b6872718f066c6fe8cc1ac"
+  "0:7ac5b9fbd9cff6ecbdd554a1e677ea91e4cb28e5e44e1a40578aa6109c6ffea5"
 );
 
 async function getPosts() {

@@ -6,7 +6,7 @@ export default function Navbar() {
     <AppBar position="relative">
       <Toolbar
         sx={{
-          "display": "flex",
+          display: "flex",
           "flex-direction": "row",
           "justify-content": "flex-start",
           "row-gap": "10px",
@@ -17,7 +17,7 @@ export default function Navbar() {
         }}
       >
         <Avatar
-          alt="Decentralog - Venom blog"
+          alt="Unstoppable Blog - Venom blog"
           src={logo}
           sx={{ width: 56, height: 56 }}
         />
@@ -28,7 +28,7 @@ export default function Navbar() {
           alignItems="flex-start"
         >
           <Typography variant="h6" color="inherit" noWrap>
-            Decentralog
+            Unstoppable Blog
           </Typography>
           <Typography variant="caption" color="inherit" noWrap>
             Using Venom network to create a fully decentralized blog posting
