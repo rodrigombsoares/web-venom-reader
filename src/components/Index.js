@@ -5,13 +5,13 @@ import PostList from "./PostList";
 function Index() {
   const [posts, setPosts] = useState([]);
 
-  useEffect(
-    () => async () => {
+  useEffect(() => {
+    async function getVenomPosts() {
       let posts = await getPosts();
       setPosts(posts);
-    },
-    []
-  );
+    }
+    getVenomPosts();
+  },[]);
   return <PostList postPaths={posts} />;
 }
 
